@@ -56,13 +56,16 @@
   }
   .lotteryLogo {
     margin-top: 10px;
-    margin-left: 10vh;
+
     width: 400px;
     height: auto;
     padding: 5px;
   }
   .FormPage {
+    display: flex;
     padding-bottom: 25px;
+    align-items: center;
+    flex-direction: row;
   }
 }
 /* Medium devices (landscape tablets, 768px and up) */
