@@ -1,6 +1,6 @@
 @media screen and (max-width: 600px) {
   body {
-    background-color: #394359;
+    background-color: #9099ad;
     padding-bottom: 25px;
   }
   /* .header img {
@@ -8,7 +8,8 @@
     } */
   .App {
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
   }
   .header {
     display: flex;
@@ -33,6 +34,41 @@
   }
   .FormPage {
     padding-bottom: 25px;
+    padding: 1em 0;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .copyright {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  .icons {
+    margin: 0 auto;
+    align-items: center;
+    width: 250px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .icons .company_logo img {
+    width: 50px;
+  }
+  .footer {
+    position: relative;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+  }
+  .footer img {
+    width: 20px;
+  }
+  .thank-text {
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media screen and (min-width: 600px) {
@@ -42,7 +78,8 @@
   }
   .App {
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
   }
   .header {
     display: flex;
@@ -56,16 +93,48 @@
   }
   .lotteryLogo {
     margin-top: 10px;
-
     width: 400px;
     height: auto;
     padding: 5px;
+  }
+  .footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
   }
   .FormPage {
     display: flex;
     padding-bottom: 25px;
     align-items: center;
     flex-direction: row;
+    padding: 1em 0;
+  }
+  .copyright {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  .icons {
+    margin: 0 auto;
+    align-items: center;
+    width: 250px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .icons .company_logo img {
+    width: 50px;
+  }
+  .footer img {
+    width: 20px;
+  }
+
+  .thank-text {
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 /* Medium devices (landscape tablets, 768px and up) */
@@ -79,8 +148,9 @@
     padding-bottom: 25px;
   }
   .App {
-    display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    position: relative;
   }
 
   .header {
@@ -102,6 +172,40 @@
   .FormPage {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    padding: 1em 0;
+  }
+
+  .copyright {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  .icons {
+    margin: 0 auto;
+    align-items: center;
+    width: 250px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .icons .company_logo img {
+    width: 50px;
+  }
+  .footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .footer img {
+    width: 20px;
+  }
+  .thank-text {
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
     align-items: center;
   }
 }

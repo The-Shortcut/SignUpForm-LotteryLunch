@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import moment from "moment";
 import LotteryLunch from "../images/lotterylunch.png";
+import Thanking from "./thankingPage";
 
 const FormPage = () => {
   const [name, setName] = useState("");
@@ -26,6 +27,7 @@ const FormPage = () => {
   const [lnameValidation, setLnameValidation] = useState(false);
   const [emailValidation, setEmailValidation] = useState(false);
   const [cemailValidation, setCemailValidation] = useState(false);
+  const [thankPage, setThankPage] = useState(true);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -136,6 +138,7 @@ const FormPage = () => {
       console.log(`Status text: ${res.statusText}`);
       setStatus("info");
       setError("Thank you for signing up!!");
+      setThankPage(false)
     } catch (error) {
       // console.log(error.response.status);
       // if (error.response.status === 400) {
@@ -154,6 +157,17 @@ const FormPage = () => {
     document.getElementById("email").value = "";
     document.getElementById("cemail").value = "";
   };
+  return <div>{thankPage ? <Form handleRegister={handleRegister}
+  status={status}
+  error={error} 
+  handleFirstNameChange={handleFirstNameChange}
+   handleLastNameChange={handleLastNameChange}
+   handleEmailChange={handleEmailChange}
+   handleConfirmEmailChange={handleConfirmEmailChange}
+   handleCheckClick={handleCheckClick}
+  /> : <Thanking />}</div>;
+};
+const Form = (props) => {
   return (
     <div className="FormPage">
       <img src={LotteryLunch} className="lotteryLogo" alt="logo" />
@@ -164,7 +178,7 @@ const FormPage = () => {
               <MDBCardBody>
                 <form
                   className="needs-validation"
-                  onSubmit={(e) => handleRegister(e)}
+                  onSubmit={(e) => props.handleRegister(e)}
                   noValidate
                 >
                   <p className="h4 text-center py-4">Sign up</p>
@@ -180,7 +194,7 @@ const FormPage = () => {
                       success="right"
                       id="fname"
                       className="form-control"
-                      onChange={handleFirstNameChange}
+                      onChange={props.handleFirstNameChange}
                     >
                       <div className="invalid-feedback">
                         Please provide a valid first name.
@@ -198,7 +212,7 @@ const FormPage = () => {
                       error="wrong"
                       success="right"
                       id="lname"
-                      onChange={handleLastNameChange}
+                      onChange={props.handleLastNameChange}
                     >
                       <div className="invalid-feedback">
                         Please provide a valid last name.
@@ -215,7 +229,7 @@ const FormPage = () => {
                       error="wrong"
                       success="right"
                       id="email"
-                      onChange={handleEmailChange}
+                      onChange={props.handleEmailChange}
                     >
                       <div className="invalid-feedback">
                         Please provide a valid email.
@@ -233,7 +247,7 @@ const FormPage = () => {
                       error="wrong"
                       success="right"
                       id="cemail"
-                      onChange={handleConfirmEmailChange}
+                      onChange={props.handleConfirmEmailChange}
                     >
                       {" "}
                       <div className="invalid-feedback">
@@ -250,7 +264,7 @@ const FormPage = () => {
                         value=""
                         id="invalidCheck"
                         required
-                        onChange={handleCheckClick}
+                        onChange={props.handleCheckClick}
                       />
                       <label
                         className="custom-control-label"
@@ -263,9 +277,9 @@ const FormPage = () => {
                       </div>
                     </div>
                   </MDBCol>
-                  {error && (
-                    <MDBAlert color={status} dismiss>
-                      {error}
+                  {props.error && (
+                    <MDBAlert color={props.status} dismiss>
+                      {props.error}
                     </MDBAlert>
                   )}
                   <div className="text-center py-4 mt-3">
