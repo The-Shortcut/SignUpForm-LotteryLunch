@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/header";
-import FormPage from "./components/form";
+import FormPage from "./components/FormPage";
 import Footer from './components/footer';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
