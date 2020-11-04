@@ -28,8 +28,7 @@ const FormPage = () => {
   const [selectedInterests, setSelectedInterests] = useState([]);
 
   useEffect(() => {
-     fetchInterests();
-       
+    fetchInterests();
   }, []);
 
   const fetchInterests = async () => {
@@ -73,9 +72,8 @@ const FormPage = () => {
       cemailValidation &&
       check
     ) {
-     
-      addUserInterestsToDb();
       addUserToDb();
+     
     } else {
       console.log("something is missing");
       setStatus("danger");
@@ -162,6 +160,7 @@ const FormPage = () => {
       console.log(`Status text: ${res.statusText}`);
       // setStatus("info");
       // setError("Thank you for signing up!!");
+      addUserInterestsToDb();
       setThankPage(false);
     } catch (error) {
       // console.log(error.response.status);
@@ -175,17 +174,20 @@ const FormPage = () => {
       clear();
     }
   };
-  const addUserInterestsToDb = async() => {
-    const data ={
-      email:email,
-      interests:selectedInterests
-    }
-    try{
-      let res = await axios.post("http://localhost:4000/api/users_interests", data);
+  const addUserInterestsToDb = async () => {
+    const data = {
+      email: email,
+      interests: selectedInterests,
+    };
+    try {
+      let res = await axios.post(
+        "http://localhost:4000/api/users/users_interests",
+        data
+      );
       console.log(`Status code: ${res.status}`);
       console.log(`Status text: ${res.statusText}`);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   const clear = () => {
