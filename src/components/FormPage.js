@@ -25,6 +25,7 @@ const FormPage = () => {
   const [cemailValidation, setCemailValidation] = useState(false);
   const [thankPage, setThankPage] = useState(true);
   const [interests, setInterests] = useState([]);
+  const [selectedInterests, setSelectedInterests] = useState([]);
 
   useEffect(() => {
      fetchInterests();
@@ -72,7 +73,9 @@ const FormPage = () => {
       cemailValidation &&
       check
     ) {
-      makePostRequest();
+     
+      addUserInterestsToDb();
+      addUserToDb();
     } else {
       console.log("something is missing");
       setStatus("danger");
@@ -136,7 +139,17 @@ const FormPage = () => {
     helper(API_TOKEN, email);
   };
 
-  const makePostRequest = async () => {
+  const handleSelectInterests = (e) => {
+    let options = e;
+    let value = [];
+    for (let i = 0; i < options.length; i++) {
+      value.push(options[i].value);
+    }
+    setSelectedInterests(value);
+    console.log("interests values are ", value);
+  };
+
+  const addUserToDb = async () => {
     const data = {
       email: email,
       first_name: name,
@@ -162,6 +175,19 @@ const FormPage = () => {
       clear();
     }
   };
+  const addUserInterestsToDb = async() => {
+    const data ={
+      email:email,
+      interests:selectedInterests
+    }
+    try{
+      let res = await axios.post("http://localhost:4000/api/users_interests", data);
+      console.log(`Status code: ${res.status}`);
+      console.log(`Status text: ${res.statusText}`);
+    } catch (error) {
+      console.log(error)
+    }
+  };
   const clear = () => {
     document.getElementById("fname").value = "";
     document.getElementById("lname").value = "";
@@ -183,6 +209,7 @@ const FormPage = () => {
           handleCheckClick={handleCheckClick}
           handleNewsletterSubscription={handleNewsletterSubscription}
           interests={interests}
+          handleSelectInterests={handleSelectInterests}
         />
       ) : (
         <Thanking />
