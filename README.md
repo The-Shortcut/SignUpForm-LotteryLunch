@@ -1,4 +1,4 @@
-## This project contains sign up functionality for end-users.
+This project contains sign up functionality for end-users. The project is built using MDB components (https://mdbootstrap.com/docs/react/forms/basic/).
 
 ## Install dependencies
 
